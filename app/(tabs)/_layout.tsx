@@ -1,34 +1,93 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { Tabs } from "expo-router";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
+        tabBarActiveTintColor: "#003366",
+        tabBarInactiveTintColor: "#666",
+        headerStyle: {
+          backgroundColor: "#003366",
+          height:0, 
+        },
+        headerTintColor: "#003366",
+        tabBarStyle: {
+          backgroundColor: "#fff", 
+          borderTopWidth: 1,
+          borderTopColor: "#ddd",
+        },
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: "Home",
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <Ionicons
+              name={focused ? "home-sharp" : "home-outline"}
+              color={color}
+              size={24}
+            />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="mutasi"
         options={{
-          title: 'Explore',
+          title: "Mutasi",
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <Ionicons
+              name={focused ? "list" : "list-outline"}
+              color={color}
+              size={24}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="qris"
+        options={{
+          title: "Qris",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome
+              name="qrcode"
+              color="#fff"
+              size={30}
+              style={{
+                backgroundColor: "#3E8EED",
+                padding: 12,
+                borderRadius: 50,
+                marginTop: -20,
+              }}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="aktivitas"
+        options={{
+          title: "Aktivitas",
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? "mail" : "mail-outline"}
+              color={color}
+              size={24}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="akun"
+        options={{
+          title: "Akun",
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? "person" : "person-outline"}
+              color={color}
+              size={24}
+            />
           ),
         }}
       />
